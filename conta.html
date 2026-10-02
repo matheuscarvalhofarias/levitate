@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta • Levitate | Pedidos, Rastreamento e Perfil</title>
+    <meta name="description" content="Acesse sua conta Levitate. Acompanhe seus pedidos em tempo real, gerencie seus endereços, dados cadastrais e aproveite benefícios exclusivos do Levitate Club.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=30">
+</head>
+<body class="manual-page-body">
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled always-scrolled" id="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html#home">
+                    <img src="assets/images/logo.png" alt="Levitate" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="sobre.html">Nossa História</a></li>
+                <li><a href="index.html#manuais">Manuais</a></li>
+                <li><a href="embaixadores.html">Embaixadores</a></li>
+                <li class="mobile-drawer-cta">
+                    <a href="index.html#produtos">Comprar Produtos</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-icon" id="openAccountBtn" aria-label="Minha Conta" title="Minha Conta">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <button class="btn-icon" id="openCartBtn" aria-label="Carrinho" title="Sacola de Compras">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="navCartCount" class="nav-cart-badge">0</span>
+                </button>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-backdrop" id="mobileBackdrop"></div>
+    </nav>
+
+    <!-- MAIN SECTION: LOGGED OUT (AUTH FORMS - FULLSCREEN CENTERED WITH BRAND GRADIENT) -->
+    <main class="auth-wrapper" id="authSection">
+        <div class="auth-card">
+            <!-- Segmented Tabs -->
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab-btn active" id="tabBtnLogin">Já sou Cliente</button>
+                <button type="button" class="auth-tab-btn" id="tabBtnRegister">Criar Nova Conta</button>
+            </div>
+
+            <!-- 1-Click Demo Login Shortcut -->
+            <div class="auth-demo-shortcut">
+                <p>💡 Testando o site? Acesse instantaneamente a conta de teste:</p>
+                <button type="button" class="btn-demo-quick" id="btnQuickDemo">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <span>Entrar como Camila Mendes (1-Clique)</span>
+                </button>
+            </div>
+
+            <!-- FORM: LOGIN -->
+            <form id="formLogin" novalidate>
+                <div class="auth-form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" class="auth-input" placeholder="seuemail@exemplo.com" value="camila.mendes@exemplo.com" required>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="loginPassword">
+                        <span>Senha</span>
+                        <a href="#recuperar" id="linkForgotPassword">Esqueceu a senha?</a>
+                    </label>
+                    <div class="auth-input-wrap">
+                        <input type="password" id="loginPassword" class="auth-input" placeholder="••••••••" value="123456" required>
+                        <button type="button" class="auth-pwd-toggle" id="toggleLoginPwd" aria-label="Mostrar senha">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="auth-checkbox">
+                    <input type="checkbox" id="rememberMe" checked>
+                    <label for="rememberMe">Lembrar de mim neste dispositivo</label>
+                </div>
+
+                <button type="submit" class="btn-auth-submit" id="btnSubmitLogin">
+                    <span>Acessar Minha Conta</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </form>
+
+            <!-- FORM: CADASTRO -->
+            <form id="formRegister" style="display: none;" novalidate>
+                <div class="auth-grid-2">
+                    <div class="auth-form-group auth-col-full">
+                        <label for="regName">Nome Completo *</label>
+                        <input type="text" id="regName" class="auth-input" placeholder="Ex: Camila Mendes" required>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label for="regEmail">E-mail *</label>
+                        <input type="email" id="regEmail" class="auth-input" placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label for="regPhone">WhatsApp / Celular com DDD *</label>
+                        <input type="tel" id="regPhone" class="auth-input" placeholder="(11) 98765-4321" required>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label for="regCpf">CPF (para emissão da Nota Fiscal) *</label>
+                        <input type="text" id="regCpf" class="auth-input" placeholder="000.000.000-00" required>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label for="regPassword">Criar Senha *</label>
+                        <div class="auth-input-wrap">
+                            <input type="password" id="regPassword" class="auth-input" placeholder="Mínimo 6 caracteres" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-checkbox auth-col-full">
+                        <input type="checkbox" id="regTerms" required checked>
+                        <label for="regTerms">Li e concordo com a <a href="index.html#privacidade" style="color: #0284C7; font-weight: 600;">Política de Privacidade</a> e os <a href="index.html#termos" style="color: #0284C7; font-weight: 600;">Termos e Condições</a>.</label>
+                    </div>
+
+                    <button type="submit" class="btn-auth-submit auth-col-full" id="btnSubmitRegister">
+                        <span>Cadastrar e Ganhar 100 Pontos</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- DASHBOARD HEADER: LOGGED IN USER GREETING BANNER -->
+    <header class="account-hero dashboard-hero" id="dashboardHero" style="display: none;">
+        <div class="account-hero-container">
+            <span class="account-hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Área do Cliente • Levitate
+            </span>
+            <div id="heroLoggedIn" class="account-user-card">
+                <div class="account-user-info">
+                    <div class="account-avatar" id="userAvatarText">CM</div>
+                    <div class="account-user-details">
+                        <h2 id="userNameGreeting">Olá, Camila Mendes!</h2>
+                        <div class="user-badges">
+                            <span class="account-badge-pill vip">⭐ Membro VIP</span>
+                            <span class="account-badge-pill" id="userPointsBadge">🎁 150 Pontos Club</span>
+                            <span class="account-badge-pill" id="userMemberSince">Membro desde 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="account-user-actions">
+                    <button class="btn-logout" id="btnLogoutHeader">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        <span>Sair da Conta</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN SECTION: LOGGED IN (CUSTOMER DASHBOARD) -->
+    <main class="dashboard-container" id="dashboardSection" style="display: none;">
+        <div class="dashboard-layout">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="dashboard-sidebar">
+                <ul class="dashboard-nav-list">
+                    <li class="dashboard-nav-item">
+                        <button type="button" class="active" data-target="panelOrders">
+                            <span class="nav-item-left">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                <span>Meus Pedidos</span>
+                            </span>
+                            <span class="dashboard-nav-badge" id="ordersCountBadge">2</span>
+                        </button>
+                    </li>
+                    <li class="dashboard-nav-item">
+                        <button type="button" data-target="panelAddresses">
+                            <span class="nav-item-left">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>Endereços</span>
+                            </span>
+                            <span class="dashboard-nav-badge" style="background: #3FA0D7;">1</span>
+                        </button>
+                    </li>
+                    <li class="dashboard-nav-item">
+                        <button type="button" data-target="panelProfile">
+                            <span class="nav-item-left">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>Dados Pessoais</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="dashboard-nav-item">
+                        <button type="button" data-target="panelClub">
+                            <span class="nav-item-left">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>Levitate Club & Cupons</span>
+                            </span>
+                            <span class="dashboard-nav-badge" style="background: #10B981;">2</span>
+                        </button>
+                    </li>
+                    <li class="dashboard-nav-item" style="border-top: 1px solid #E2E8F0; padding-top: 0.5rem; margin-top: 0.5rem;">
+                        <button type="button" id="btnSidebarLogout" style="color: #EF4444;">
+                            <span class="nav-item-left">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                <span>Sair</span>
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Dashboard Content Panels -->
+            <div class="dashboard-content-area">
+                
+                <!-- PANEL 1: MEUS PEDIDOS -->
+                <div class="dashboard-panel active" id="panelOrders">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Meus Pedidos</h3>
+                            <p>Consulte o histórico de compras e acompanhe o rastreio da entrega.</p>
+                        </div>
+                    </div>
+
+                    <div id="ordersListContainer">
+                        <!-- Pedido 1: Em Transporte -->
+                        <div class="order-card">
+                            <div class="order-card-header">
+                                <div class="order-id-group">
+                                    <h4>Pedido #LEV-92841</h4>
+                                    <span>Realizado em 01 de Outubro de 2026</span>
+                                </div>
+                                <span class="order-status-pill status-shipping">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    Em Transporte • Previsão 04/10
+                                </span>
+                            </div>
+
+                            <!-- Linha do tempo visual de rastreio -->
+                            <div class="order-timeline-box">
+                                <div class="timeline-tracker">
+                                    <div class="timeline-step done">
+                                        <div class="timeline-step-icon">✓</div>
+                                        <span class="timeline-step-label">Realizado</span>
+                                        <span class="timeline-step-time">01/10 14:20</span>
+                                    </div>
+                                    <div class="timeline-step done">
+                                        <div class="timeline-step-icon">✓</div>
+                                        <span class="timeline-step-label">Aprovado</span>
+                                        <span class="timeline-step-time">01/10 14:22</span>
+                                    </div>
+                                    <div class="timeline-step done">
+                                        <div class="timeline-step-icon">✓</div>
+                                        <span class="timeline-step-label">Separação</span>
+                                        <span class="timeline-step-time">01/10 18:30</span>
+                                    </div>
+                                    <div class="timeline-step active">
+                                        <div class="timeline-step-icon">🚚</div>
+                                        <span class="timeline-step-label">Em Rota</span>
+                                        <span class="timeline-step-time">02/10 08:15</span>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <div class="timeline-step-icon">○</div>
+                                        <span class="timeline-step-label">Entrega</span>
+                                        <span class="timeline-step-time">Previsão 04/10</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #475569; padding-top: 0.8rem; border-top: 1px dashed #CBD5E1;">
+                                    <span>Código de Rastreio: <strong style="color: #0284C7;">BR849204192LV</strong></span>
+                                    <button type="button" class="btn-copy-coupon" onclick="copyText('BR849204192LV', 'Código de rastreio copiado!')">Copiar Código</button>
+                                </div>
+                            </div>
+
+                            <!-- Itens do Pedido -->
+                            <div class="order-items-list">
+                                <div class="order-item-row">
+                                    <div class="order-item-info">
+                                        <img src="assets/images/produto_agua_micelar.jpg" alt="Água Micelar Corporal Levitate" class="order-item-thumb">
+                                        <div>
+                                            <h5>Água Micelar Corporal Levitate (200ml)</h5>
+                                            <span>Quantidade: 1 un • Preço un.: R$ 59,90</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-price">R$ 59,90</div>
+                                </div>
+                                <div class="order-item-row">
+                                    <div class="order-item-info">
+                                        <img src="assets/images/produto_lencos.jpg" alt="Lenços Umedecidos Levitate" class="order-item-thumb">
+                                        <div>
+                                            <h5>Lenços Umedecidos Levitate (48 unidades)</h5>
+                                            <span>Quantidade: 1 un • Preço un.: R$ 29,90</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-price">R$ 29,90</div>
+                                </div>
+                            </div>
+
+                            <!-- Rodapé do Card -->
+                            <div class="order-card-footer">
+                                <div class="order-total-group">
+                                    <span>Total do Pedido:</span> R$ 89,80
+                                </div>
+                                <div class="order-action-buttons">
+                                    <button type="button" class="btn-track" onclick="showToast('Rastreamento atualizado: Em transferência para a unidade de distribuição.')">Atualizar Status</button>
+                                    <button type="button" class="btn-reorder" onclick="window.LevitateAuth.reorder('LEV-92841')">Comprar Novamente</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pedido 2: Entregue -->
+                        <div class="order-card">
+                            <div class="order-card-header">
+                                <div class="order-id-group">
+                                    <h4>Pedido #LEV-71049</h4>
+                                    <span>Realizado em 15 de Setembro de 2026</span>
+                                </div>
+                                <span class="order-status-pill status-delivered">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Entregue em 18/09/2026
+                                </span>
+                            </div>
+
+                            <div class="order-items-list">
+                                <div class="order-item-row">
+                                    <div class="order-item-info">
+                                        <img src="assets/images/produto_neutralizador.jpg" alt="Neutralizador Têxtil Levitate" class="order-item-thumb">
+                                        <div>
+                                            <h5>Neutralizador Têxtil Levitate (500ml)</h5>
+                                            <span>Quantidade: 1 un • Preço un.: R$ 69,90</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-price">R$ 69,90</div>
+                                </div>
+                            </div>
+
+                            <div class="order-card-footer">
+                                <div class="order-total-group">
+                                    <span>Total Pago:</span> R$ 69,90 (PIX)
+                                </div>
+                                <div class="order-action-buttons">
+                                    <button type="button" class="btn-track" onclick="showToast('Download da Nota Fiscal iniciado.')">Nota Fiscal (PDF)</button>
+                                    <button type="button" class="btn-reorder" onclick="window.LevitateAuth.reorder('LEV-71049')">Comprar Novamente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: ENDEREÇOS -->
+                <div class="dashboard-panel" id="panelAddresses">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Meus Endereços</h3>
+                            <p>Gerencie seus locais de entrega para agilizar suas compras.</p>
+                        </div>
+                        <button type="button" class="btn-reorder" id="btnToggleNewAddress">+ Novo Endereço</button>
+                    </div>
+
+                    <!-- Formulário de Novo Endereço (Colapsável) -->
+                    <div id="newAddressFormWrap" style="display: none; background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 20px; padding: 2rem; margin-bottom: 2rem;">
+                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #0F172A; margin-bottom: 1.2rem;">Cadastrar Endereço</h4>
+                        <form id="formAddAddress" novalidate>
+                            <div class="profile-grid">
+                                <div class="auth-form-group">
+                                    <label>Identificação (Ex: Casa, Trabalho)</label>
+                                    <input type="text" id="addrTitle" class="auth-input" placeholder="Casa" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label>CEP</label>
+                                    <input type="text" id="addrZip" class="auth-input" placeholder="00000-000" required>
+                                </div>
+                                <div class="auth-form-group profile-full">
+                                    <label>Logradouro / Rua / Avenida</label>
+                                    <input type="text" id="addrStreet" class="auth-input" placeholder="Ex: Av. Paulista, 1578" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label>Complemento</label>
+                                    <input type="text" id="addrComp" class="auth-input" placeholder="Apto 82, Bloco B">
+                                </div>
+                                <div class="auth-form-group">
+                                    <label>Bairro</label>
+                                    <input type="text" id="addrNeigh" class="auth-input" placeholder="Bela Vista" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label>Cidade</label>
+                                    <input type="text" id="addrCity" class="auth-input" placeholder="São Paulo" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label>Estado (UF)</label>
+                                    <input type="text" id="addrState" class="auth-input" placeholder="SP" maxlength="2" required>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                                <button type="button" class="btn-track" id="btnCancelAddress">Cancelar</button>
+                                <button type="submit" class="btn-reorder">Salvar Endereço</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="addresses-grid" id="addressesGridContainer">
+                        <div class="address-card is-default">
+                            <span class="address-default-badge">Principal</span>
+                            <h4>Minha Casa</h4>
+                            <p>
+                                <strong>Camila Mendes</strong><br>
+                                Av. Paulista, 1578 - Apto 82 (Torre Sul)<br>
+                                Bela Vista - São Paulo / SP<br>
+                                CEP: 01310-200
+                            </p>
+                            <div class="address-actions">
+                                <button type="button" onclick="showToast('Endereço pronto para edição.')">Editar</button>
+                                <button type="button" class="btn-remove-addr" onclick="showToast('O endereço principal não pode ser excluído.')">Remover</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 3: DADOS PESSOAIS -->
+                <div class="dashboard-panel" id="panelProfile">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Dados Pessoais & Segurança</h3>
+                            <p>Mantenha suas informações cadastrais sempre atualizadas.</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <form id="formProfile" novalidate>
+                            <div class="profile-grid">
+                                <div class="auth-form-group">
+                                    <label for="profName">Nome Completo</label>
+                                    <input type="text" id="profName" class="auth-input" value="Camila Mendes" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label for="profEmail">E-mail</label>
+                                    <input type="email" id="profEmail" class="auth-input" value="camila.mendes@exemplo.com" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label for="profPhone">Telefone / WhatsApp</label>
+                                    <input type="tel" id="profPhone" class="auth-input" value="(11) 98765-4321" required>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label for="profCpf">CPF</label>
+                                    <input type="text" id="profCpf" class="auth-input" value="348.912.045-89" required>
+                                </div>
+                                <div class="auth-form-group profile-full" style="border-top: 1px solid #E2E8F0; padding-top: 1.5rem; margin-top: 0.5rem;">
+                                    <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">Alterar Senha</h4>
+                                    <p style="font-size: 0.88rem; color: #64748B; margin-bottom: 1rem;">Deixe em branco se não desejar alterar sua senha atual.</p>
+                                </div>
+                                <div class="auth-form-group">
+                                    <label for="profCurrentPwd">Senha Atual</label>
+                                    <input type="password" id="profCurrentPwd" class="auth-input" placeholder="••••••••">
+                                </div>
+                                <div class="auth-form-group">
+                                    <label for="profNewPwd">Nova Senha</label>
+                                    <input type="password" id="profNewPwd" class="auth-input" placeholder="Mínimo 6 caracteres">
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <button type="submit" class="btn-reorder" style="padding: 0.8rem 2.2rem; font-size: 1rem;">Salvar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- PANEL 4: LEVITATE CLUB & CUPONS -->
+                <div class="dashboard-panel" id="panelClub">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Levitate Club & Vantagens</h3>
+                            <p>Seus pontos acumulados e cupons ativos para usar nas próximas compras.</p>
+                        </div>
+                    </div>
+
+                    <div class="club-card">
+                        <span class="account-badge-pill vip">⭐ Nível Ouro • Benefício Ativo</span>
+                        <div class="club-balance">150 Pontos</div>
+                        <p style="color: #CBD5E1; font-size: 1.05rem; margin-bottom: 1.2rem;">Equivalente a <strong>R$ 15,00 de desconto direto</strong> na sua próxima compra.</p>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 50px; height: 10px; width: 100%; max-width: 450px; overflow: hidden; margin-bottom: 0.6rem;">
+                            <div style="background: #41D3F2; height: 100%; width: 75%;"></div>
+                        </div>
+                        <span style="font-size: 0.82rem; color: #94A3B8;">Faltam 50 pontos para desbloquear Frete Grátis Ilimitado no Nível Diamante.</span>
+                    </div>
+
+                    <h4 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 1.2rem;">Cupons Exclusivos Disponíveis</h4>
+                    <div class="coupons-grid">
+                        <div class="coupon-card">
+                            <div>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">10% de Desconto</span>
+                                <div class="coupon-code">BEMVINDA10</div>
+                                <span style="font-size: 0.82rem; color: #10B981;">Válido em qualquer pedido</span>
+                            </div>
+                            <button type="button" class="btn-copy-coupon" onclick="copyText('BEMVINDA10', 'Cupom BEMVINDA10 copiado!')">Copiar</button>
+                        </div>
+                        <div class="coupon-card">
+                            <div>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">Frete Grátis</span>
+                                <div class="coupon-code">FRETEGRATIS</div>
+                                <span style="font-size: 0.82rem; color: #10B981;">Em compras acima de R$ 99</span>
+                            </div>
+                            <button type="button" class="btn-copy-coupon" onclick="copyText('FRETEGRATIS', 'Cupom FRETEGRATIS copiado!')">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="account-toast" id="accountToast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span id="toastMessage">Alteração salva com sucesso!</span>
+    </div>
+
+    <!-- Mini-Cart Side Drawer (Sacola) -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Sua Sacola de Compras">
+        <div class="cart-drawer-header">
+            <h3>
+                <span>Sua Sacola</span>
+                <span class="cart-badge-count" id="drawerCartCount">0</span>
+            </h3>
+            <button class="btn-close-cart" id="btnCloseCart" aria-label="Fechar sacola">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Barra de Frete Grátis -->
+        <div class="cart-free-shipping-bar">
+            <span id="shippingBarText">Faltam R$ 99,00 para você ganhar <strong>Frete Grátis</strong>!</span>
+            <div class="shipping-bar-track">
+                <div class="shipping-bar-progress" id="shippingProgress" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Itens da sacola -->
+        <div class="cart-drawer-body" id="cartItemsList">
+            <!-- Renderizado dinamicamente via JS -->
+        </div>
+
+        <!-- Rodapé da sacola -->
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-subtotal">
+                <span>Subtotal:</span>
+                <span id="cartSubtotalValue">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout-cart" id="btnCheckout" onclick="window.location.href='checkout.html'">
+                <span>Finalizar Compra</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+            <button class="btn-keep-shopping" id="btnKeepShopping">Continuar Comprando</button>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer" id="siteFooter">
+        <div class="footer-content">
+            <div class="brand">
+                <a href="index.html#home">
+                    <img src="assets/images/logo.png" alt="Levitate" class="logo-img footer-logo">
+                </a>
+                <p class="company-name">Levitate Cosméticos e Artigos LTDA</p>
+                <p class="company-cnpj">CNPJ: 58.068.912/0001-85</p>
+                <p class="brand-tagline">Cuidado inteligente, leveza e alta performance para a sua pele.</p>
+            </div>
+            <div class="links">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="index.html#manuais">Manual Levitate</a></li>
+                    <li><a href="index.html#faq">Dúvidas Frequentes</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="embaixadores.html">Embaixadores</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h4>Políticas & Termos</h4>
+                <ul>
+                    <li><a href="index.html#privacidade">Política de Privacidade</a></li>
+                    <li><a href="index.html#termos">Termos e Condições</a></li>
+                </ul>
+            </div>
+            <div class="socials">
+                <h4>Acompanhe</h4>
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 Levitate Cosméticos e Artigos LTDA • CNPJ: 58.068.912/0001-85 • Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/nav.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+        // Função utilitária de toast
+        function showToast(msg) {
+            const toast = document.getElementById('accountToast');
+            const msgEl = document.getElementById('toastMessage');
+            if (toast && msgEl) {
+                msgEl.innerText = msg;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3500);
+            }
+        }
+
+        // Função de copiar texto para a área de transferência
+        function copyText(text, successMsg) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(successMsg || 'Copiado para a área de transferência!');
+            }).catch(() => {
+                showToast('Texto: ' + text);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elementos de UI da Conta
+            const authSection = document.getElementById('authSection');
+            const dashboardSection = document.getElementById('dashboardSection');
+            const dashboardHero = document.getElementById('dashboardHero');
+            const siteFooter = document.getElementById('siteFooter');
+            const userAvatarText = document.getElementById('userAvatarText');
+            const userNameGreeting = document.getElementById('userNameGreeting');
+
+            // Tabs do Login / Cadastro
+            const tabBtnLogin = document.getElementById('tabBtnLogin');
+            const tabBtnRegister = document.getElementById('tabBtnRegister');
+            const formLogin = document.getElementById('formLogin');
+            const formRegister = document.getElementById('formRegister');
+            const btnQuickDemo = document.getElementById('btnQuickDemo');
+            const toggleLoginPwd = document.getElementById('toggleLoginPwd');
+            const loginPassword = document.getElementById('loginPassword');
+
+            // Botões de Logout
+            const btnLogoutHeader = document.getElementById('btnLogoutHeader');
+            const btnSidebarLogout = document.getElementById('btnSidebarLogout');
+
+            // Renderiza o estado atual do usuário
+            function renderState() {
+                const user = window.LevitateAuth.getUser();
+
+                if (user) {
+                    // Estado Logado
+                    authSection.style.display = 'none';
+                    if (dashboardHero) dashboardHero.style.display = 'block';
+                    dashboardSection.style.display = 'block';
+                    if (siteFooter) siteFooter.style.display = 'block';
+
+                    // Inicial do nome para o avatar
+                    const initials = user.name ? user.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase() : 'LV';
+                    userAvatarText.innerText = initials;
+                    userNameGreeting.innerText = `Olá, ${user.name}!`;
+
+                    // Preenche campos de perfil
+                    if (document.getElementById('profName')) document.getElementById('profName').value = user.name || '';
+                    if (document.getElementById('profEmail')) document.getElementById('profEmail').value = user.email || '';
+                    if (document.getElementById('profPhone')) document.getElementById('profPhone').value = user.phone || '';
+                    if (document.getElementById('profCpf')) document.getElementById('profCpf').value = user.cpf || '';
+
+                    // Renderiza lista dinâmica de pedidos
+                    const ordersContainer = document.getElementById('ordersListContainer');
+                    if (ordersContainer && user.orders && user.orders.length > 0) {
+                        ordersContainer.innerHTML = user.orders.map(order => {
+                            const isPaid = order.status === 'Pagamento Aprovado' || order.status === 'Entregue' || order.status === 'Em Transporte';
+                            const statusClass = order.statusClass || (isPaid ? 'status-shipping' : 'status-pending');
+                            
+                            const itemsHtml = (order.items || []).map(item => `
+                                <div class="order-item-row">
+                                    <div class="order-item-info">
+                                        <img src="${item.img || 'assets/images/produto_agua_micelar.jpg'}" alt="${item.name}" class="order-item-thumb">
+                                        <div>
+                                            <h5>${item.name}</h5>
+                                            <span>Quantidade: ${item.qty || 1} • R$ ${(item.price || 0).toFixed(2).replace('.', ',')} un</span>
+                                        </div>
+                                    </div>
+                                    <strong>R$ ${((item.price || 0) * (item.qty || 1)).toFixed(2).replace('.', ',')}</strong>
+                                </div>
+                            `).join('');
+
+                            const timelineHtml = (order.timeline || [
+                                { title: "Pedido Realizado", time: order.date || "Hoje", done: true },
+                                { title: "Pagamento", time: isPaid ? "Aprovado" : "Aguardando", done: isPaid, active: !isPaid },
+                                { title: "Separação", time: "-", done: false },
+                                { title: "Em Rota", time: "-", done: false },
+                                { title: "Entrega", time: order.deliveryEstimate || "Previsão 4 dias", done: false }
+                            ]).map((step) => {
+                                const stepClass = step.done ? 'done' : (step.active ? 'active' : '');
+                                const icon = step.done ? '✓' : (step.active ? '⚡' : '○');
+                                return `
+                                    <div class="timeline-step ${stepClass}">
+                                        <div class="timeline-step-icon">${icon}</div>
+                                        <span class="timeline-step-label">${step.title}</span>
+                                        <span class="timeline-step-time">${step.time}</span>
+                                    </div>
+                                `;
+                            }).join('');
+
+                            return `
+                                <div class="order-card" style="margin-bottom: 2rem;">
+                                    <div class="order-card-header">
+                                        <div class="order-id-group">
+                                            <h4>Pedido #${order.orderId || order.id}</h4>
+                                            <span>Realizado em ${order.date || 'Hoje'}</span>
+                                        </div>
+                                        <span class="order-status-pill ${statusClass}">
+                                            ${order.statusText || order.status || 'Em Processamento'}
+                                        </span>
+                                    </div>
+
+                                    <div class="order-timeline-box">
+                                        <div class="timeline-tracker">
+                                            ${timelineHtml}
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #475569; padding-top: 0.8rem; border-top: 1px dashed #CBD5E1;">
+                                            <span>Código de Rastreio: <strong style="color: #0284C7;">${order.trackingCode || 'Gerando código...'}</strong></span>
+                                            ${order.trackingCode ? `<button type="button" class="btn-copy-coupon" onclick="copyText('${order.trackingCode}', 'Código de rastreio copiado!')">Copiar Código</button>` : ''}
+                                        </div>
+                                    </div>
+
+                                    <div class="order-items-list">
+                                        ${itemsHtml}
+                                    </div>
+
+                                    <div class="order-card-footer">
+                                        <div class="order-summary-totals">
+                                            <span>Total do Pedido: <strong>R$ ${(order.total || 0).toFixed(2).replace('.', ',')}</strong> (${order.paymentMethod || 'PIX'})</span>
+                                        </div>
+                                        <button type="button" class="btn-reorder" onclick="window.LevitateAuth.reorder('${order.orderId || order.id}')">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                                            <span>Comprar Novamente</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+                } else {
+                    // Estado Deslogado: Centralizado na viewport com gradiente de fundo
+                    authSection.style.display = 'flex';
+                    if (dashboardHero) dashboardHero.style.display = 'none';
+                    dashboardSection.style.display = 'none';
+                    if (siteFooter) siteFooter.style.display = 'none';
+                }
+
+                window.LevitateAuth.updateHeaderBadge();
+            }
+
+            // Alternância entre Login e Cadastro
+            if (tabBtnLogin && tabBtnRegister) {
+                tabBtnLogin.addEventListener('click', () => {
+                    tabBtnLogin.classList.add('active');
+                    tabBtnRegister.classList.remove('active');
+                    formLogin.style.display = 'block';
+                    formRegister.style.display = 'none';
+                });
+
+                tabBtnRegister.addEventListener('click', () => {
+                    tabBtnRegister.classList.add('active');
+                    tabBtnLogin.classList.remove('active');
+                    formLogin.style.display = 'none';
+                    formRegister.style.display = 'block';
+                });
+            }
+
+            // Alternar visibilidade de senha
+            if (toggleLoginPwd && loginPassword) {
+                toggleLoginPwd.addEventListener('click', () => {
+                    const isPwd = loginPassword.type === 'password';
+                    loginPassword.type = isPwd ? 'text' : 'password';
+                });
+            }
+
+            // 1-Clique Demo Login
+            if (btnQuickDemo) {
+                btnQuickDemo.addEventListener('click', () => {
+                    window.LevitateAuth.loginDemo();
+                    showToast('Bem-vinda, Camila Mendes! Acesso liberado.');
+                    renderState();
+                });
+            }
+
+            // Submit Login
+            if (formLogin) {
+                formLogin.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const pwd = document.getElementById('loginPassword').value;
+
+                    if (!email || !pwd) {
+                        alert('Por favor, informe seu e-mail e senha.');
+                        return;
+                    }
+
+                    window.LevitateAuth.login(email, pwd);
+                    showToast('Login realizado com sucesso!');
+                    renderState();
+                });
+            }
+
+            // Submit Cadastro
+            if (formRegister) {
+                formRegister.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('regName').value.trim();
+                    const email = document.getElementById('regEmail').value.trim();
+                    const phone = document.getElementById('regPhone').value.trim();
+                    const cpf = document.getElementById('regCpf').value.trim();
+                    const pwd = document.getElementById('regPassword').value;
+
+                    if (!name || !email || !phone || !cpf || !pwd) {
+                        alert('Por favor, preencha todos os campos obrigatórios.');
+                        return;
+                    }
+
+                    window.LevitateAuth.register({ name, email, phone, cpf });
+                    showToast(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
+                    renderState();
+                });
+            }
+
+            // Ações de Logout
+            const handleLogout = () => {
+                window.LevitateAuth.logout();
+                showToast('Você saiu da sua conta.');
+                renderState();
+            };
+
+            if (btnLogoutHeader) btnLogoutHeader.addEventListener('click', handleLogout);
+            if (btnSidebarLogout) btnSidebarLogout.addEventListener('click', handleLogout);
+
+            // Troca de Tabs no Dashboard
+            const navButtons = document.querySelectorAll('.dashboard-nav-item button[data-target]');
+            const panels = document.querySelectorAll('.dashboard-panel');
+
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const targetPanel = document.getElementById(targetId);
+                    if (targetPanel) targetPanel.classList.add('active');
+                });
+            });
+
+            // Formulário de Perfil (Salvar Alterações)
+            const formProfile = document.getElementById('formProfile');
+            if (formProfile) {
+                formProfile.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('profName').value.trim();
+                    const email = document.getElementById('profEmail').value.trim();
+                    const phone = document.getElementById('profPhone').value.trim();
+                    const cpf = document.getElementById('profCpf').value.trim();
+
+                    window.LevitateAuth.updateProfile({ name, email, phone, cpf });
+                    showToast('Dados cadastrais atualizados com sucesso!');
+                    renderState();
+                });
+            }
+
+            // Gerenciamento de Endereços
+            const btnToggleNewAddress = document.getElementById('btnToggleNewAddress');
+            const newAddressFormWrap = document.getElementById('newAddressFormWrap');
+            const btnCancelAddress = document.getElementById('btnCancelAddress');
+            const formAddAddress = document.getElementById('formAddAddress');
+
+            if (btnToggleNewAddress && newAddressFormWrap) {
+                btnToggleNewAddress.addEventListener('click', () => {
+                    const isVisible = newAddressFormWrap.style.display !== 'none';
+                    newAddressFormWrap.style.display = isVisible ? 'none' : 'block';
+                });
+            }
+
+            if (btnCancelAddress && newAddressFormWrap) {
+                btnCancelAddress.addEventListener('click', () => {
+                    newAddressFormWrap.style.display = 'none';
+                });
+            }
+
+            if (formAddAddress) {
+                formAddAddress.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const title = document.getElementById('addrTitle').value.trim();
+                    const zip = document.getElementById('addrZip').value.trim();
+                    const street = document.getElementById('addrStreet').value.trim();
+                    const comp = document.getElementById('addrComp').value.trim();
+                    const neigh = document.getElementById('addrNeigh').value.trim();
+                    const city = document.getElementById('addrCity').value.trim();
+                    const state = document.getElementById('addrState').value.trim();
+
+                    if (!title || !zip || !street || !neigh || !city || !state) {
+                        alert('Por favor, preencha os campos obrigatórios do endereço.');
+                        return;
+                    }
+
+                    const user = window.LevitateAuth.getUser();
+                    window.LevitateAuth.addAddress({
+                        title, zip, street, complement: comp, neighborhood: neigh, city, state,
+                        recipient: user ? user.name : 'Cliente Levitate'
+                    });
+
+                    // Cria novo card na lista
+                    const container = document.getElementById('addressesGridContainer');
+                    if (container) {
+                        const newCard = document.createElement('div');
+                        newCard.className = 'address-card';
+                        newCard.innerHTML = `
+                            <h4>${title}</h4>
+                            <p>
+                                <strong>${user ? user.name : 'Cliente'}</strong><br>
+                                ${street} ${comp ? '- ' + comp : ''}<br>
+                                ${neigh} - ${city} / ${state}<br>
+                                CEP: ${zip}
+                            </p>
+                            <div class="address-actions">
+                                <button type="button" onclick="showToast('Endereço pronto para edição.')">Editar</button>
+                                <button type="button" class="btn-remove-addr" onclick="this.closest('.address-card').remove(); showToast('Endereço removido.');">Remover</button>
+                            </div>
+                        `;
+                        container.appendChild(newCard);
+                    }
+
+                    formAddAddress.reset();
+                    newAddressFormWrap.style.display = 'none';
+                    showToast('Novo endereço adicionado com sucesso!');
+                });
+            }
+
+            // Inicializa renderização
+            renderState();
+        });
+    </script>
+</body>
+</html>

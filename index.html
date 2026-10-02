@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levitate - Cuidado Corporal</title>
+    <meta name="description" content="Descubra a linha de cuidados corporais Levitate. Nossa Água Micelar traz frescor e leveza para sua pele.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=18">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="logo.png" alt="Levitate" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="sobre.html">Nossa História</a></li>
+                <li><a href="#manuais">Manuais</a></li>
+                <li><a href="embaixadores.html">Embaixadores</a></li>
+                <li class="mobile-drawer-cta">
+                    <a href="#produtos">Comprar Produtos</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-icon" aria-label="Minha Conta" title="Minha Conta">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <button class="btn-icon" id="openCartBtn" aria-label="Carrinho" title="Sacola de Compras">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="navCartCount" class="nav-cart-badge">0</span>
+                </button>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-backdrop" id="mobileBackdrop"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2>A leveza que<br> seu corpo merece.</h2>
+                <p>Conheça a nova Água Micelar Corporal Levitate. Limpeza profunda, hidratação suave e prevenção de odores para o seu bem-estar diário.</p>
+                <div class="hero-buttons">
+                    <a href="produto-agua-micelar.html" class="btn-primary">Descobrir Agora</a>
+                    <a href="sobre.html" class="btn-secondary">Saber Mais</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="hero_products.png" alt="Linha de Cuidados Corporais Levitate" class="floating-product" id="hero-product-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Seals / Certifications (Below Hero) -->
+    <section class="trust-seals-section">
+        <div class="trust-seals-container">
+            <!-- Selo 1: Dermatologicamente Testada -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </div>
+                <h4>Dermatologica-<br>mente Testada</h4>
+            </div>
+
+            <!-- Selo 2: Ginecologicamente Testada -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 3a9 9 0 0 0 0 18"></path>
+                        <path d="M12 8c1.5 1.5 2.5 3 2.5 4s-1 2.5-2.5 2.5S9.5 13 9.5 12s1-2.5 2.5-2.5z"></path>
+                    </svg>
+                </div>
+                <h4>Ginecológica-<br>mente Testada</h4>
+            </div>
+
+            <!-- Selo 3: Hipoalergênica -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        <path d="m9 13 2 2 4-4"></path>
+                    </svg>
+                </div>
+                <h4>Hipoalergênica</h4>
+            </div>
+
+            <!-- Selo 4: Não contém Alumínio -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                        <path d="M9 15l3-6 3 6"></path>
+                        <path d="M10 13h4"></path>
+                    </svg>
+                </div>
+                <h4>Não contém<br>Alumínio</h4>
+            </div>
+
+            <!-- Selo 5: Vegana -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+                </div>
+                <h4>Vegana</h4>
+            </div>
+
+            <!-- Selo 6: Sem testes em animais -->
+            <div class="seal-card">
+                <div class="seal-icon-wrapper">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16.5 13a3.5 3.5 0 0 0-3.5-3.5h-2A3.5 3.5 0 0 0 7.5 13c0 2.5 2 4.5 4.5 4.5h0c2.5 0 4.5-2 4.5-4.5Z"></path>
+                        <path d="M8.5 9.5C7.5 7 7 4.5 8.5 3.5c1.5-1 3 1.5 3.5 4"></path>
+                        <path d="M15.5 9.5C16.5 7 17 4.5 15.5 3.5c-1.5-1-3 1.5-3.5 4"></path>
+                        <path d="M12 17.5v2"></path>
+                    </svg>
+                </div>
+                <h4>Sem testes<br>em animais</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products-section">
+        <div class="section-header">
+            <span class="section-badge">Linha Exclusiva</span>
+            <h2>Rotina Completa Levitate</h2>
+            <p>Fórmulas inteligentes e dermatologicamente testadas para acompanhar seu ritmo diário com máxima leveza e proteção.</p>
+        </div>
+        <div class="product-grid">
+            <!-- Card 1: Água Micelar Corporal -->
+            <div class="product-card featured-card">
+                <div class="card-top-badges">
+                    <span class="card-badge featured">Destaque • Mais Vendido</span>
+                    <button class="btn-wishlist" aria-label="Favoritar" onclick="this.classList.toggle('active')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                </div>
+                <div class="product-img-wrapper" id="img-agua-micelar">
+                    <a href="produto-agua-micelar.html">
+                        <img src="produto_agua_micelar.jpg" alt="Água Micelar Corporal Levitate">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-score">4.9</span>
+                        <span class="rating-count">(168 avaliações)</span>
+                    </div>
+                    <span class="category">Cuidado Corporal</span>
+                    <h3><a href="produto-agua-micelar.html">Água Micelar Corporal</a></h3>
+                    <p class="product-desc">Higienização suave sem enxágue. Limpa profundamente, hidrata e neutraliza odores corporais.</p>
+                    <div class="product-tags">
+                        <span>Pantenol</span>
+                        <span>Niacinamida</span>
+                        <span>Prevenção de Odores</span>
+                    </div>
+                    <div class="price-container">
+                        <div class="price-main">
+                            <span class="currency">R$</span>
+                            <span class="price-value">59</span>
+                            <span class="price-cents">,90</span>
+                        </div>
+                        <div class="installments">ou 2x de <strong>R$ 29,95</strong> sem juros</div>
+                    </div>
+                    <a href="produto-agua-micelar.html" class="btn-add-cart featured-btn" style="text-align: center; justify-content: center; text-decoration: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span>Comprar Agora</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Neutralizador Têxtil -->
+            <div class="product-card">
+                <div class="card-top-badges">
+                    <span class="card-badge">Frescor Ativo</span>
+                    <button class="btn-wishlist" aria-label="Favoritar" onclick="this.classList.toggle('active')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                </div>
+                <div class="product-img-wrapper" id="img-neutralizador">
+                    <a href="produto-neutralizador-textil.html">
+                        <img src="produto_neutralizador.jpg" alt="Neutralizador Têxtil Levitate">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-score">4.8</span>
+                        <span class="rating-count">(94 avaliações)</span>
+                    </div>
+                    <span class="category">Roupas e Calçados</span>
+                    <h3><a href="produto-neutralizador-textil.html">Neutralizador Têxtil</a></h3>
+                    <p class="product-desc">Spray neutralizador avançado que elimina odores impregnados em tecidos sem agredir as fibras.</p>
+                    <div class="product-tags">
+                        <span>Ação Imediata</span>
+                        <span>Não Mancha</span>
+                        <span>Efeito Prolongado</span>
+                    </div>
+                    <div class="price-container">
+                        <div class="price-main">
+                            <span class="currency">R$</span>
+                            <span class="price-value">45</span>
+                            <span class="price-cents">,90</span>
+                        </div>
+                        <div class="installments">ou 2x de <strong>R$ 22,95</strong> sem juros</div>
+                    </div>
+                    <a href="produto-neutralizador-textil.html" class="btn-add-cart featured-btn" style="text-align: center; justify-content: center; text-decoration: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span>Comprar Agora</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Lenços Levitate -->
+            <div class="product-card">
+                <div class="card-top-badges">
+                    <span class="card-badge">Praticidade</span>
+                    <button class="btn-wishlist" aria-label="Favoritar" onclick="this.classList.toggle('active')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                </div>
+                <div class="product-img-wrapper" id="img-lencos">
+                    <a href="produto-lencos.html">
+                        <img src="produto_lencos.jpg" alt="Lenços Levitate (48 unidades)">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-score">4.9</span>
+                        <span class="rating-count">(112 avaliações)</span>
+                    </div>
+                    <span class="category">Praticidade Diária</span>
+                    <h3><a href="produto-lencos.html">Lenços Levitate</a></h3>
+                    <p class="product-desc">48 lenços secos descartáveis de toque ultra macio. Ideais para aplicação conjunta com a Água Micelar.</p>
+                    <div class="product-tags">
+                        <span>48 Unidades</span>
+                        <span>Hipoalergênico</span>
+                        <span>Toque Macio</span>
+                    </div>
+                    <div class="price-container">
+                        <div class="price-main">
+                            <span class="currency">R$</span>
+                            <span class="price-value">29</span>
+                            <span class="price-cents">,90</span>
+                        </div>
+                        <div class="installments">Pronta entrega • Frete rápido</div>
+                    </div>
+                    <a href="produto-lencos.html" class="btn-add-cart featured-btn" style="text-align: center; justify-content: center; text-decoration: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span>Comprar Agora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Section -->
+    <section id="sobre" class="lifestyle-section">
+        <div class="lifestyle-image">
+            <img src="lifestyle.jpg?v=brand_woman" alt="Mulher com Água Micelar Levitate">
+        </div>
+        <div class="lifestyle-content">
+            <h2>Mais que um cosmético,<br> um respiro.</h2>
+            <p>Acreditamos que o cuidado corporal deve ser um momento de pausa. Com a Levitate, você se liberta do peso do dia a dia e renova suas energias através de fórmulas puras e eficientes.</p>
+            <p>Nossos produtos são Hipoalergênicos e Dermatologicamente Testados para cuidar da sua saúde com máxima segurança e eficácia comprovada.</p>
+            <a href="sobre.html" class="btn-primary mt-2" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Nossa História</a>
+        </div>
+    </section>
+
+    <!-- Manuals Section -->
+    <section id="manuais" class="manuals-section">
+        <div class="manuals-container">
+            <div class="section-header">
+                <span class="section-badge">Guias & Protocolos</span>
+                <h2>Clique nos botões abaixo e<br>conheça o <strong>MANUAL LEVITATE</strong> para:</h2>
+                <p>Orientações práticas e científicas para restaurar o equilíbrio da sua pele e viver com máxima confiança e frescor todos os dias.</p>
+            </div>
+            
+            <div class="manuals-grid">
+                <!-- Manual 1: Axilas -->
+                <div class="manual-card">
+                    <div class="manual-card-header">
+                        <div class="manual-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        </div>
+                        <span class="manual-tag">Protocolo Axilar</span>
+                    </div>
+                    <h3>Bromidrose nas axilas - Cecê</h3>
+                    <p class="manual-desc">Descubra como o acúmulo de bactérias nas glândulas apócrinas provoca o odor persistente e como a fórmula micelar com Niacinamida neutraliza a causa raiz sem agredir os poros.</p>
+                    <ul class="manual-features">
+                        <li><span class="check-icon">✓</span> Neutralização microbiológica suave</li>
+                        <li><span class="check-icon">✓</span> Sem obstrução de poros com sais de alumínio</li>
+                        <li><span class="check-icon">✓</span> Passo a passo diário sem enxágue</li>
+                    </ul>
+                    <a href="manual-axilas.html" class="btn-manual">
+                        <span>Acessar Manual Axilas</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- Manual 2: Pés -->
+                <div class="manual-card">
+                    <div class="manual-card-header">
+                        <div class="manual-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <span class="manual-tag">Pés & Calçados</span>
+                    </div>
+                    <h3>Bromidrose nos pés - Chulé</h3>
+                    <p class="manual-desc">Aprenda o método eficaz de higienização cutânea associado à assepsia de tênis, meias e sapatos para eliminar de vez os compostos voláteis de odor nos pés.</p>
+                    <ul class="manual-features">
+                        <li><span class="check-icon">✓</span> Ação direta em fungos e bactérias locais</li>
+                        <li><span class="check-icon">✓</span> Aplicação combinada no corpo e nos tecidos</li>
+                        <li><span class="check-icon">✓</span> Prevenção de umidade e proliferação</li>
+                    </ul>
+                    <a href="manual-pes.html" class="btn-manual">
+                        <span>Acessar Manual Pés</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- Manual 3: Íntima -->
+                <div class="manual-card">
+                    <div class="manual-card-header">
+                        <div class="manual-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <span class="manual-tag">Cuidado Delicado</span>
+                    </div>
+                    <h3>Higiene íntima</h3>
+                    <p class="manual-desc">O guia de segurança ginecológica para manter a microbiota saudável, respeitando o pH fisiológico e garantindo proteção prolongada sem irritações ou ressecamento.</p>
+                    <ul class="manual-features">
+                        <li><span class="check-icon">✓</span> Preservação do pH e barreira protetora</li>
+                        <li><span class="check-icon">✓</span> Testado ginecologicamente e hipoalergênico</li>
+                        <li><span class="check-icon">✓</span> Praticidade com lenços ultra macios</li>
+                    </ul>
+                    <a href="manual-intima.html" class="btn-manual">
+                        <span>Acessar Manual Íntimo</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actives Banner (Blue CTA) -->
+    <section class="actives-banner">
+        <div class="actives-banner-container">
+            <h2>Levitate cuida da pele através dos ativos:</h2>
+        </div>
+    </section>
+
+    <!-- Actives Cards Section (White Area) -->
+    <section class="actives-section">
+        <div class="actives-container">
+            <div class="actives-grid">
+                <!-- Ativo 1: Niacinamida -->
+                <div class="active-card">
+                    <div class="active-card-top">
+                        <div class="active-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 19 6 19 14 12 18 5 14 5 6 12 2"></polygon>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <span class="active-badge">Vitamina B3</span>
+                    </div>
+                    <h3>Niacinamida</h3>
+                    <p class="active-role">Regeneração, uniformização do tom e barreira dérmica.</p>
+                    <p class="active-desc">Ativo biocompatível de alta performance que reforça a integridade da barreira cutânea, previne o escurecimento das axilas e áreas de atrito, além de acalmar processos inflamatórios decorrentes do suor e da depilação.</p>
+                    <div class="active-benefits-tags">
+                        <span>Uniformiza o Tom</span>
+                        <span>Ação Calmante</span>
+                        <span>Fortalece a Barreira</span>
+                    </div>
+                </div>
+
+                <!-- Ativo 2: Ácido Lático -->
+                <div class="active-card">
+                    <div class="active-card-top">
+                        <div class="active-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                <path d="M12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                            </svg>
+                        </div>
+                        <span class="active-badge">AHA Biocompatível</span>
+                    </div>
+                    <h3>Ácido lático</h3>
+                    <p class="active-role">Equilíbrio do pH fisiológico e inibição de bactérias.</p>
+                    <p class="active-desc">Alfa-hidroxiácido nobre que mantém o pH ácido natural da pele, criando um microambiente inóspito para microrganismos causadores de mau odor. Promove renovação celular suave sem ressecar ou agredir a flora benéfica.</p>
+                    <div class="active-benefits-tags">
+                        <span>Equilíbrio do pH</span>
+                        <span>Inibição de Odores</span>
+                        <span>Renovação Suave</span>
+                    </div>
+                </div>
+
+                <!-- Ativo 3: Pantenol e Aloe Vera -->
+                <div class="active-card">
+                    <div class="active-card-top">
+                        <div class="active-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                            </svg>
+                        </div>
+                        <span class="active-badge">Pró-Vit B5 + Botânico</span>
+                    </div>
+                    <h3>Pantenol e Aloe Vera</h3>
+                    <p class="active-role">Hidratação celular profunda, cicatrização e alívio imediato.</p>
+                    <p class="active-desc">A sinergia entre o Pantenol (Pró-Vitamina B5) e o extrato concentrado de Aloe Vera atrai e retém água nas camadas mais profundas da pele, acalmando o atrito diário, prevenindo fissuras e restaurando a maciez com frescor duradouro.</p>
+                    <div class="active-benefits-tags">
+                        <span>Hidratação Profunda</span>
+                        <span>Alívio Imediato</span>
+                        <span>Ação Antioxidante</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Formula Section (Free of Aluminum, Alcohol, Parabens) -->
+    <section class="clean-formula-section">
+        <div class="clean-formula-container">
+            <div class="clean-formula-header">
+                <span class="section-badge">Pureza & Segurança</span>
+                <h2>Fórmula Livre de Alumínio, Álcool e Parabenos</h2>
+                <p>Cuidado corporal consciente e biocompatível. Cuidamos do seu bem-estar diário sem substâncias oclusivas, tóxicas ou agressivas à pele.</p>
+            </div>
+
+            <div class="clean-formula-grid">
+                <!-- 01: Sem Alumínio -->
+                <div class="clean-card">
+                    <div class="clean-pill-badge">0% Alumínio</div>
+                    <div class="clean-icon-circle">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                        </svg>
+                    </div>
+                    <h3>Sem Sais de Alumínio</h3>
+                    <p>Ao contrário dos antitranspirantes convencionais que entopem os poros para bloquear o suor, Levitate respeita a transpiração natural da pele e neutraliza o mau odor através do controle inteligente de bactérias.</p>
+                    <span class="clean-benefit">✓ Poros livres • Zero risco de foliculite</span>
+                </div>
+
+                <!-- 02: Sem Álcool -->
+                <div class="clean-card">
+                    <div class="clean-pill-badge">0% Álcool</div>
+                    <div class="clean-icon-circle">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Livre de Álcool Etílico</h3>
+                    <p>Fórmula não ressecante que preserva a barreira lipídica protetora. Não queima, não provoca ardência pós-depilação e previne manchas escuras causadas por irritações químicas constantes.</p>
+                    <span class="clean-benefit">✓ Zero ardência • Previne manchas escuras</span>
+                </div>
+
+                <!-- 03: Sem Parabenos -->
+                <div class="clean-card">
+                    <div class="clean-pill-badge">0% Parabenos</div>
+                    <div class="clean-icon-circle">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Zero Parabenos e Toxinas</h3>
+                    <p>Conservação moderna através de ativos seguros e biocompatíveis. Totalmente livre de conservantes agressivos, disruptores endócrinos, petrolatos e sulfatos pesados.</p>
+                    <span class="clean-benefit">✓ Biocompatível • 100% Não tóxico</span>
+                </div>
+            </div>
+
+            <!-- Trust Seals Bar -->
+            <div class="trust-seals-bar">
+                <div class="seal-item">
+                    <span class="seal-icon">🌿</span>
+                    <div class="seal-text">
+                        <strong>Fórmula Limpa</strong>
+                        <span>Ingredientes seguros</span>
+                    </div>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-icon">🔬</span>
+                    <div class="seal-text">
+                        <strong>Dermotestado</strong>
+                        <span>Segurança comprovada</span>
+                    </div>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-icon">🌸</span>
+                    <div class="seal-text">
+                        <strong>Ginecotestado</strong>
+                        <span>pH fisiológico</span>
+                    </div>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-icon">🐰</span>
+                    <div class="seal-text">
+                        <strong>Cruelty-Free</strong>
+                        <span>Sem testes em animais</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="brand">
+                <a href="#home">
+                    <img src="logo.png" alt="Levitate" class="logo-img footer-logo">
+                </a>
+                <p class="company-name">Levitate Cosméticos e Artigos LTDA</p>
+                <p class="company-cnpj">CNPJ: 58.068.912/0001-85</p>
+                <p class="brand-tagline">Cuidado inteligente, leveza e alta performance para a sua pele.</p>
+            </div>
+            <div class="links">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="#manuais">Manual Levitate</a></li>
+                    <li><a href="#faq">Dúvidas Frequentes</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="embaixadores.html">Embaixadores</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h4>Políticas & Termos</h4>
+                <ul>
+                    <li><a href="#privacidade">Política de Privacidade</a></li>
+                    <li><a href="#termos">Termos e Condições</a></li>
+                </ul>
+            </div>
+            <div class="socials">
+                <h4>Acompanhe</h4>
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 Levitate Cosméticos e Artigos LTDA • CNPJ: 58.068.912/0001-85 • Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mini-Cart Side Drawer (Sacola) -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Sua Sacola de Compras">
+        <div class="cart-drawer-header">
+            <h3>
+                <span>Sua Sacola</span>
+                <span class="cart-badge-count" id="drawerCartCount">0</span>
+            </h3>
+            <button class="btn-close-cart" id="btnCloseCart" aria-label="Fechar sacola">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Barra de Frete Grátis -->
+        <div class="cart-free-shipping-bar">
+            <span id="shippingBarText">Faltam R$ 99,00 para você ganhar <strong>Frete Grátis</strong>!</span>
+            <div class="shipping-bar-track">
+                <div class="shipping-bar-progress" id="shippingProgress" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Itens da sacola -->
+        <div class="cart-drawer-body" id="cartItemsList">
+            <!-- Renderizado dinamicamente via JS -->
+        </div>
+
+        <!-- Rodapé da sacola -->
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-subtotal">
+                <span>Subtotal:</span>
+                <span id="cartSubtotalValue">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout-cart" id="btnCheckout" onclick="window.location.href='checkout.html'">
+                <span>Finalizar Compra</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+            <button class="btn-keep-shopping" id="btnKeepShopping">Continuar Comprando</button>
+        </div>
+    </aside>
+
+    <script src="nav.js"></script>
+    <script src="cart.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

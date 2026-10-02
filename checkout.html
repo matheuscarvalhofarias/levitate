@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Seguro • Levitate | Finalizar Compra</title>
+    <meta name="description" content="Ambiente de pagamento seguro e criptografado da Levitate. Conclua seu pedido com PIX (5% OFF), Cartão de Crédito ou Boleto.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=31">
+</head>
+<body class="checkout-body">
+
+    <!-- Header Seguro do Checkout -->
+    <header class="checkout-header">
+        <div class="checkout-header-container">
+            <a href="index.html#home" class="checkout-logo" aria-label="Voltar para a Loja Levitate">
+                <img src="assets/images/logo.png" alt="Levitate" class="checkout-logo-img">
+            </a>
+
+            <div class="checkout-security-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Ambiente Seguro 256-bit SSL</span>
+            </div>
+
+            <a href="index.html#produtos" class="checkout-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Voltar à Loja</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal do Checkout (2 Colunas) -->
+    <main class="checkout-main">
+        <div class="checkout-container">
+
+            <!-- Formulários do Checkout (Esquerda) -->
+            <div class="checkout-forms-col">
+
+                <!-- Aviso para Usuário Logado vs Deslogado -->
+                <div id="checkoutAuthStatus" class="checkout-auth-banner" style="display: none;">
+                    <div class="checkout-auth-info">
+                        <div class="checkout-auth-avatar" id="checkoutUserAvatar">CM</div>
+                        <div>
+                            <span class="checkout-auth-greeting" id="checkoutUserGreeting">Comprando como <strong>Camila Mendes</strong></span>
+                            <span class="checkout-auth-email" id="checkoutUserEmail">camila.mendes@exemplo.com</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-checkout-switch-user" id="btnSwitchUser">Trocar Conta</button>
+                </div>
+
+                <form id="checkoutForm" novalidate>
+
+                    <!-- PASSO 1: DADOS DE IDENTIFICAÇÃO -->
+                    <section class="checkout-step-card" id="stepCustomer">
+                        <div class="checkout-step-header">
+                            <span class="step-num">1</span>
+                            <div>
+                                <h2>Identificação e Contato</h2>
+                                <p>Usaremos estes dados para enviar as atualizações e a nota fiscal do pedido.</p>
+                            </div>
+                        </div>
+
+                        <div class="checkout-form-grid">
+                            <div class="checkout-field-full">
+                                <label for="custName">Nome Completo *</label>
+                                <input type="text" id="custName" name="name" autocomplete="name" placeholder="Ex: Camila Mendes da Silva" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="custEmail">E-mail *</label>
+                                <input type="email" id="custEmail" name="email" autocomplete="email" placeholder="seu@email.com" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="custPhone">WhatsApp / Telefone *</label>
+                                <input type="tel" id="custPhone" name="phone" autocomplete="tel" placeholder="(11) 98765-4321" inputmode="numeric" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="custCpf">CPF *</label>
+                                <input type="text" id="custCpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half checkout-field-demo-login">
+                                <span class="field-hint">💡 Testando agora?</span>
+                                <button type="button" class="btn-fill-demo" id="btnFillDemoData">Preencher com Dados de Teste</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- PASSO 2: ENDEREÇO DE ENTREGA E FRETE -->
+                    <section class="checkout-step-card" id="stepShipping">
+                        <div class="checkout-step-header">
+                            <span class="step-num">2</span>
+                            <div>
+                                <h2>Endereço de Entrega</h2>
+                                <p>Onde você deseja receber seus produtos Levitate?</p>
+                            </div>
+                        </div>
+
+                        <!-- Seletor de Endereços Salvos (se houver) -->
+                        <div id="savedAddressesWrap" class="saved-addresses-selector" style="display: none;">
+                            <label class="section-sublabel">Endereços Salvos na sua Conta:</label>
+                            <div class="saved-addresses-list" id="savedAddressesList">
+                                <!-- Preenchido dinamicamente via JS -->
+                            </div>
+                        </div>
+
+                        <div class="checkout-form-grid">
+                            <div class="checkout-field-half">
+                                <div class="label-with-link">
+                                    <label for="shipZip">CEP *</label>
+                                    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" rel="noopener noreferrer" class="link-small">Não sei meu CEP</a>
+                                </div>
+                                <div class="zip-input-wrap">
+                                    <input type="text" id="shipZip" name="zip" autocomplete="postal-code" placeholder="00000-000" inputmode="numeric" maxlength="9" required enterkeyhint="next">
+                                    <button type="button" class="btn-search-cep" id="btnSearchCep" aria-label="Buscar CEP">Buscar</button>
+                                </div>
+                                <span id="cepFeedback" class="field-status-msg"></span>
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="shipState">Estado (UF) *</label>
+                                <select id="shipState" name="state" autocomplete="address-level1" required enterkeyhint="next">
+                                    <option value="">Selecione...</option>
+                                    <option value="SP" selected>São Paulo (SP)</option>
+                                    <option value="RJ">Rio de Janeiro (RJ)</option>
+                                    <option value="MG">Minas Gerais (MG)</option>
+                                    <option value="PR">Paraná (PR)</option>
+                                    <option value="SC">Santa Catarina (SC)</option>
+                                    <option value="RS">Rio Grande do Sul (RS)</option>
+                                    <option value="BA">Bahia (BA)</option>
+                                    <option value="DF">Distrito Federal (DF)</option>
+                                    <option value="ES">Espírito Santo (ES)</option>
+                                    <option value="GO">Goiás (GO)</option>
+                                    <option value="PE">Pernambuco (PE)</option>
+                                    <option value="CE">Ceará (CE)</option>
+                                    <option value="PA">Pará (PA)</option>
+                                    <option value="AM">Amazonas (AM)</option>
+                                    <option value="MT">Mato Grosso (MT)</option>
+                                    <option value="MS">Mato Grosso do Sul (MS)</option>
+                                    <option value="Outro">Outro Estado</option>
+                                </select>
+                            </div>
+
+                            <div class="checkout-field-full">
+                                <label for="shipStreet">Rua / Avenida *</label>
+                                <input type="text" id="shipStreet" name="street" autocomplete="shipping address-line1" placeholder="Ex: Avenida Paulista" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="shipNumber">Número *</label>
+                                <input type="text" id="shipNumber" name="number" placeholder="Ex: 1578" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="shipComplement">Complemento (opcional)</label>
+                                <input type="text" id="shipComplement" name="complement" autocomplete="shipping address-line2" placeholder="Ex: Apto 82, Bloco B" enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="shipNeighborhood">Bairro *</label>
+                                <input type="text" id="shipNeighborhood" name="neighborhood" placeholder="Ex: Bela Vista" required enterkeyhint="next">
+                            </div>
+
+                            <div class="checkout-field-half">
+                                <label for="shipCity">Cidade *</label>
+                                <input type="text" id="shipCity" name="city" autocomplete="address-level2" placeholder="Ex: São Paulo" required enterkeyhint="next">
+                            </div>
+                        </div>
+
+                        <!-- OPÇÕES DE FRETE -->
+                        <div class="shipping-methods-wrap">
+                            <label class="section-sublabel">Escolha a Opção de Envio:</label>
+                            <div class="shipping-options-grid" id="shippingOptionsContainer">
+                                
+                                <label class="shipping-option-card selected" for="shipMethodPac">
+                                    <input type="radio" id="shipMethodPac" name="shippingMethod" value="pac" checked>
+                                    <div class="shipping-option-content">
+                                        <div class="shipping-option-info">
+                                            <span class="shipping-title">Frete Econômico (Correios PAC)</span>
+                                            <span class="shipping-estimate">Prazo médio: 4 a 6 dias úteis</span>
+                                        </div>
+                                        <div class="shipping-price-badge" id="badgePacPrice">
+                                            <span class="price-val">R$ 12,90</span>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="shipping-option-card" for="shipMethodSedex">
+                                    <input type="radio" id="shipMethodSedex" name="shippingMethod" value="sedex">
+                                    <div class="shipping-option-content">
+                                        <div class="shipping-option-info">
+                                            <span class="shipping-title">Frete Expresso (SEDEX / Jadlog)</span>
+                                            <span class="shipping-estimate">Prazo médio: 1 a 2 dias úteis</span>
+                                        </div>
+                                        <div class="shipping-price-badge">
+                                            <span class="price-val">R$ 18,90</span>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="shipping-option-card" for="shipMethodPickup">
+                                    <input type="radio" id="shipMethodPickup" name="shippingMethod" value="pickup">
+                                    <div class="shipping-option-content">
+                                        <div class="shipping-option-info">
+                                            <span class="shipping-title">Retirada Express (São Paulo - SP)</span>
+                                            <span class="shipping-estimate">Disponível em até 2h após confirmação</span>
+                                        </div>
+                                        <div class="shipping-price-badge">
+                                            <span class="price-free">GRÁTIS</span>
+                                        </div>
+                                    </div>
+                                </label>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- PASSO 3: FORMA DE PAGAMENTO -->
+                    <section class="checkout-step-card" id="stepPayment">
+                        <div class="checkout-step-header">
+                            <span class="step-num">3</span>
+                            <div>
+                                <h2>Forma de Pagamento</h2>
+                                <p>Transação 100% segura e criptografada de ponta a ponta.</p>
+                            </div>
+                        </div>
+
+                        <!-- Abas de Pagamento -->
+                        <div class="payment-tabs-nav" role="tablist">
+                            <button type="button" class="payment-tab-btn active" data-method="pix" role="tab" aria-selected="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                                <span>PIX</span>
+                                <span class="tab-discount-tag">5% OFF</span>
+                            </button>
+
+                            <button type="button" class="payment-tab-btn" data-method="credit_card" role="tab" aria-selected="false">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                                <span>Cartão de Crédito</span>
+                            </button>
+
+                            <button type="button" class="payment-tab-btn" data-method="boleto" role="tab" aria-selected="false">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="4" y1="3" x2="4" y2="21"></line>
+                                    <line x1="7" y1="3" x2="7" y2="21"></line>
+                                    <line x1="11" y1="3" x2="11" y2="21"></line>
+                                    <line x1="14" y1="3" x2="14" y2="21"></line>
+                                    <line x1="17" y1="3" x2="17" y2="21"></line>
+                                    <line x1="20" y1="3" x2="20" y2="21"></line>
+                                </svg>
+                                <span>Boleto Bancário</span>
+                            </button>
+                        </div>
+
+                        <!-- PAINEL PIX -->
+                        <div class="payment-panel active" id="panelPix">
+                            <div class="pix-feature-box">
+                                <div class="pix-badge-promo">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>5% de Desconto Exclusivo Aplicado</span>
+                                </div>
+                                <h3>Aprovação Instantânea via PIX</h3>
+                                <p>Ao clicar no botão de finalizar, exibiremos o QR Code dinâmico e o código Copia e Cola para pagamento imediato no app do seu banco.</p>
+                                <ul class="pix-steps-list">
+                                    <li>⚡ <strong>Aprovação em segundos:</strong> seu pedido entra em separação imediatamente.</li>
+                                    <li>🔒 <strong>Seguro e sem taxas:</strong> direto pelo Banco Central.</li>
+                                    <li>📱 <strong>Fácil:</strong> pague no celular ou escaneie pelo computador.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- PAINEL CARTÃO DE CRÉDITO -->
+                        <div class="payment-panel" id="panelCreditCard">
+                            <div class="checkout-form-grid">
+                                
+                                <div class="checkout-field-full">
+                                    <div class="label-with-flags">
+                                        <label for="ccNumber">Número do Cartão *</label>
+                                        <div class="cc-flags-row">
+                                            <span class="flag-icon" id="flagVisa">Visa</span>
+                                            <span class="flag-icon" id="flagMaster">Master</span>
+                                            <span class="flag-icon" id="flagElo">Elo</span>
+                                            <span class="flag-icon" id="flagHiper">Hiper</span>
+                                        </div>
+                                    </div>
+                                    <input type="text" id="ccNumber" name="cc-number" autocomplete="cc-number" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" required enterkeyhint="next">
+                                </div>
+
+                                <div class="checkout-field-full">
+                                    <label for="ccName">Nome Impresso no Cartão *</label>
+                                    <input type="text" id="ccName" name="cc-name" autocomplete="cc-name" placeholder="Como consta no cartão" required enterkeyhint="next">
+                                </div>
+
+                                <div class="checkout-field-half">
+                                    <label for="ccExp">Validade (MM/AA) *</label>
+                                    <input type="text" id="ccExp" name="cc-exp" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" inputmode="numeric" required enterkeyhint="next">
+                                </div>
+
+                                <div class="checkout-field-half">
+                                    <label for="ccCvc">Código de Segurança (CVV) *</label>
+                                    <input type="text" id="ccCvc" name="cc-csc" autocomplete="cc-csc" placeholder="123" maxlength="4" inputmode="numeric" required enterkeyhint="next">
+                                </div>
+
+                                <div class="checkout-field-full">
+                                    <label for="ccInstallments">Número de Parcelas *</label>
+                                    <select id="ccInstallments" name="installments" required enterkeyhint="done">
+                                        <option value="1">1x sem juros (À vista)</option>
+                                        <option value="2">2x sem juros</option>
+                                        <option value="3">3x sem juros</option>
+                                        <option value="4">4x sem juros</option>
+                                        <option value="5">5x sem juros</option>
+                                        <option value="6">6x sem juros</option>
+                                        <option value="10">10x com juros</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- PAINEL BOLETO BANCÁRIO -->
+                        <div class="payment-panel" id="panelBoleto">
+                            <div class="boleto-feature-box">
+                                <h3>Boleto Bancário Levitate</h3>
+                                <p>O boleto será gerado após a conclusão do pedido. Você pode pagar pelo internet banking ou em qualquer agência bancária ou lotérica.</p>
+                                <ul>
+                                    <li>📄 <strong>Vencimento:</strong> 3 dias úteis após a emissão.</li>
+                                    <li>⏳ <strong>Compensação:</strong> leva de 24h a 48h úteis para o banco confirmar.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </form>
+            </div>
+
+            <!-- Resumo do Pedido Sticky (Direita) -->
+            <aside class="checkout-summary-col">
+                <div class="order-summary-card">
+                    <div class="order-summary-header">
+                        <h3>Resumo da Sacola</h3>
+                        <span class="order-summary-badge" id="summaryItemsBadge">0 itens</span>
+                    </div>
+
+                    <!-- Lista de Produtos -->
+                    <div class="order-items-list" id="checkoutOrderItemsList">
+                        <!-- Renderizado via checkout.js -->
+                    </div>
+
+                    <!-- Cupom de Desconto -->
+                    <div class="checkout-coupon-wrap">
+                        <label for="couponInput">Possui cupom de desconto?</label>
+                        <div class="coupon-input-group">
+                            <input type="text" id="couponInput" placeholder="Ex: BEMVINDA10" uppercase>
+                            <button type="button" class="btn-apply-coupon" id="btnApplyCoupon">Aplicar</button>
+                        </div>
+                        <div id="couponAppliedBadge" class="coupon-applied-tag" style="display: none;">
+                            <span id="couponAppliedName">BEMVINDA10 (-10%)</span>
+                            <button type="button" id="btnRemoveCoupon" aria-label="Remover cupom">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- Resumo Financeiro -->
+                    <div class="order-pricing-breakdown">
+                        <div class="pricing-row">
+                            <span>Subtotal dos Produtos</span>
+                            <span id="summarySubtotal">R$ 0,00</span>
+                        </div>
+
+                        <div class="pricing-row">
+                            <span>Frete de Entrega</span>
+                            <span id="summaryShipping">R$ 12,90</span>
+                        </div>
+
+                        <div class="pricing-row discount-row" id="rowCouponDiscount" style="display: none;">
+                            <span>Desconto do Cupom</span>
+                            <span id="summaryCouponDiscount">- R$ 0,00</span>
+                        </div>
+
+                        <div class="pricing-row discount-row" id="rowPixDiscount">
+                            <span>Desconto PIX (5% OFF)</span>
+                            <span id="summaryPixDiscount">- R$ 0,00</span>
+                        </div>
+
+                        <div class="pricing-divider"></div>
+
+                        <div class="pricing-total-row">
+                            <div>
+                                <span class="total-label">Total a Pagar</span>
+                                <span class="total-subtext" id="summaryInstallmentText">em até 6x sem juros</span>
+                            </div>
+                            <span class="total-amount" id="summaryTotal">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação Primária -->
+                    <button type="button" class="btn-submit-checkout" id="btnSubmitCheckout">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span id="btnSubmitText">Finalizar Pedido Seguro</span>
+                    </button>
+
+                    <!-- Selos de Confiança -->
+                    <div class="checkout-trust-badges">
+                        <div class="trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <span>Compra 100% Protegida</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#41D3F2" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            <span>Entrega Rastreada Correios</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E83E8C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            <span>Garantia de 30 dias</span>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- MODAL / TELA DE SUCESSO: PEDIDO REALIZADO -->
+    <div class="checkout-success-overlay" id="checkoutSuccessModal" style="display: none;">
+        <div class="checkout-success-card">
+            
+            <div class="success-icon-wrap">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <span class="success-badge">Pedido Realizado com Sucesso!</span>
+            <h2 id="successOrderNumber">#LEV-84920</h2>
+            <p class="success-subtitle">Enviamos todos os detalhes e o comprovante para <strong id="successCustomerEmail">seu email</strong>.</p>
+
+            <!-- CONTEÚDO ESPECÍFICO DE PIX -->
+            <div id="successPixBox" class="success-payment-box">
+                <div class="pix-qr-container">
+                    <div class="pix-qr-code" id="pixQrCode">
+                        <!-- QR Code visual de pagamento -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014br.gov.bcb.pix0136levitate-pagamentos-pix-580689125204000053039865802BR5916LEVITATE%20LTDA6009SAO%20PAULO62070503***6304" alt="QR Code PIX Levitate" width="180" height="180">
+                    </div>
+                    <div class="pix-timer-alert">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span>Este QR Code expira em: <strong id="pixCountdown">14:59</strong></span>
+                    </div>
+                </div>
+
+                <div class="pix-copy-paste-group">
+                    <label for="pixCopyCode">Código PIX Copia e Cola:</label>
+                    <div class="copy-input-wrap">
+                        <input type="text" id="pixCopyCode" readonly value="00020126580014br.gov.bcb.pix0136levitate-pagamentos-pix-580689125204000053039865802BR5916LEVITATE%20LTDA6009SAO%20PAULO62070503***6304">
+                        <button type="button" class="btn-copy-pix" id="btnCopyPix">
+                            <span>Copiar Código PIX</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO ESPECÍFICO DE CARTÃO -->
+            <div id="successCardBox" class="success-payment-box" style="display: none;">
+                <div class="card-approved-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div>
+                        <h4>Pagamento Aprovado Instantaneamente!</h4>
+                        <p>Seus produtos já entraram na fila de separação prioritária.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO ESPECÍFICO DE BOLETO -->
+            <div id="successBoletoBox" class="success-payment-box" style="display: none;">
+                <div class="boleto-generated-box">
+                    <p>Linha Digitável do Boleto:</p>
+                    <code id="boletoBarcode">34191.79001 01043.510047 91020.150008 8 98410000008980</code>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.8rem; justify-content: center;">
+                        <button type="button" class="btn-copy-pix" onclick="navigator.clipboard.writeText(document.getElementById('boletoBarcode').innerText); alert('Linha digitável copiada!');">Copiar Código</button>
+                        <button type="button" class="btn-copy-pix" style="background: #0F172A;" onclick="alert('Abrindo visualização para impressão do boleto...');">Imprimir Boleto</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo e Ações Finais -->
+            <div class="success-actions-row">
+                <a href="conta.html" class="btn-track-order" id="btnGoToAccountOrders">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    <span>Acompanhar Pedido na Minha Conta</span>
+                </a>
+                <a href="index.html#produtos" class="btn-back-home">
+                    <span>Voltar à Loja</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="checkout-toast" id="checkoutToast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span id="checkoutToastMessage">Notificação</span>
+    </div>
+
+    <!-- Scripts do Ecossistema Levitate -->
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
